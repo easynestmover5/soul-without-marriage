@@ -88,5 +88,77 @@
   const app = initializeApp(firebaseConfig);
   const analytics = getAnalytics(app);
 </script>
+
+    <h2>Welcome to FreeToBe</h2>
+
+<div id="auth-container">
+  <!-- Signup Form -->
+  <h3>Sign Up</h3>
+  <input type="email" id="signup-email" placeholder="Email" />
+  <input type="password" id="signup-password" placeholder="Password" />
+  <button id="signup-btn">Sign Up</button>
+  <p id="signup-msg"></p>
+
+  <hr>
+
+  <!-- Login Form -->
+  <h3>Login</h3>
+  <input type="email" id="login-email" placeholder="Email" />
+  <input type="password" id="login-password" placeholder="Password" />
+  <button id="login-btn">Login</button>
+  <p id="login-msg"></p>
+</div>
+
+<hr>
+
+<div id="welcome-container" style="display:none;">
+  <h3>Hello, <span id="user-email"></span></h3>
+  <button id="logout-btn">Logout</button>
+</div>
+
+<!-- Firebase Authentication JS -->
+<script>
+  // Firebase Authentication reference
+  const auth = firebase.auth();
+
+  // Sign Up
+  document.getElementById("signup-btn").addEventListener("click", () => {
+    const email = document.getElementById("signup-email").value;
+    const password = document.getElementById("signup-password").value;
+
+    auth.createUserWithEmailAndPassword(email, password)
+      .then((userCredential) => {
+        document.getElementById("signup-msg").innerText = "Sign Up Successful!";
+      })
+      .catch((error) => {
+        document.getElementById("signup-msg").innerText = error.message;
+      });
+  });
+
+  // Login
+  document.getElementById("login-btn").addEventListener("click", () => {
+    const email = document.getElementById("login-email").value;
+    const password = document.getElementById("login-password").value;
+
+    auth.signInWithEmailAndPassword(email, password)
+      .then((userCredential) => {
+        document.getElementById("auth-container").style.display = "none";
+        document.getElementById("welcome-container").style.display = "block";
+        document.getElementById("user-email").innerText = email;
+        document.getElementById("login-msg").innerText = "";
+      })
+      .catch((error) => {
+        document.getElementById("login-msg").innerText = error.message;
+      });
+  });
+
+  // Logout
+  document.getElementById("logout-btn").addEventListener("click", () => {
+    auth.signOut().then(() => {
+      document.getElementById("auth-container").style.display = "block";
+      document.getElementById("welcome-container").style.display = "none";
+    });
+  });
+</script>
 </body>
 </html>
