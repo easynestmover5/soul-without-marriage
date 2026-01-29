@@ -2,8 +2,66 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Apni Marzi Ki Zindagi</title>
+    <title>Free To Be</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+  body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    color: #fff;
+    min-height: 100vh;
+  }
+
+  .container {
+    max-width: 420px;
+    margin: 60px auto;
+    background: #ffffff;
+    color: #333;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    text-align: center;
+  }
+
+  h2, h3 {
+    margin-top: 0;
+  }
+
+  input {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+  }
+
+  button {
+    width: 100%;
+    padding: 10px;
+    background: #667eea;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 15px;
+  }
+
+  button:hover {
+    background: #5563d6;
+  }
+
+  hr {
+    margin: 20px 0;
+  }
+
+  .tagline {
+    text-align: center;
+    margin-top: 40px;
+    font-size: 15px;
+    opacity: 0.9;
+  }
+</style>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -160,5 +218,35 @@
     });
   });
 </script>
+
+    <div class="container">
+
+  <h2>Welcome to FreeToBe</h2>
+
+  <h3>Sign Up</h3>
+  <input type="email" id="signup-email" placeholder="Email">
+  <input type="password" id="signup-password" placeholder="Password">
+  <button id="signup-btn">Sign Up</button>
+  <p id="signup-msg"></p>
+
+  <hr>
+
+  <h3>Login</h3>
+  <input type="email" id="login-email" placeholder="Email">
+  <input type="password" id="login-password" placeholder="Password">
+  <button id="login-btn">Login</button>
+  <p id="login-msg"></p>
+
+</div>
+
+<div class="container" id="welcome-container" style="display:none;">
+  <h3>Hello, <span id="user-email"></span></h3>
+  <button id="logout-btn">Logout</button>
+</div>
+
+<div class="tagline">
+  <p><b>Apni marzi ki zindagi… aur saath</b></p>
+  <p>Ek soch • Ek safar</p>
+</div>
 </body>
 </html>
